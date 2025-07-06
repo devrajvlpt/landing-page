@@ -1,3 +1,7 @@
+/* @import "tailwindcss/preflight"; */
+/* @tailwind utilities; */
+
+
 .App {
   text-align: center;
 }
@@ -14,25 +18,35 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  
 }
 
-.App-link {
-  color: #61dafb;
+/* SF Pro Display */
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../public/fonts/sf-pro-fonts/SF-Pro-Display-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* SF Pro Text */
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("../public/fonts/sf-pro-fonts/SF-Pro-Text-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+body {
+  font-family: "SF Pro Display", "SF Pro Text",   Helvetica, Arial, sans-serif;
 }
