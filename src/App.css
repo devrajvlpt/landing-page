@@ -31,15 +31,15 @@
 /* SF Pro Display */
 @font-face {
   font-family: "SF Pro Display";
-  src: url("../public/fonts/sf-pro-fonts/SF-Pro-Display-Regular.otf") format("opentype");
-  font-weight: normal;
+  src: url("https://github.com/jnsgruk/sf-pro-fonts/raw/main/SF-Pro-Display-Semibold.otf") format("opentype");
+  font-weight: 600;
   font-style: normal;
 }
 
 /* SF Pro Text */
 @font-face {
   font-family: "SF Pro Text";
-  src: url("../public/fonts/sf-pro-fonts/SF-Pro-Text-Regular.otf") format("opentype");
+  src: url("https://github.com/jnsgruk/sf-pro-fonts/raw/main/SF-Pro-Text-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }

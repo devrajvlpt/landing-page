@@ -50,14 +50,14 @@ function App() {
       
       
       {/* Header Section */}
-      <header className="w-full max-w-2xl text-left mx-auto mt-16 flex flex-row items-center">
+      <header className="w-full max-w-3xl text-left mx-auto mt-16 flex flex-row items-center ml-[20px]">
         <img src="/LDW.svg" alt="Leverage Design Works Logo" className="h-10 mb-2 px-4" />
         <span className="text-black text-xl">Leverage Design Works</span>
       </header>
 
       {/* Main Content Section */}
-      <div className="mt-48 flex flex-col items-center w-full">
-        <div className="w-full max-w-2xl text-left">
+      <div className="mt-48 flex flex-col items-center w-full ">
+        <div className="w-full max-w-3xl text-left ml-[20px]">
           {/* Available for Projects */}
           <p className="text-xl text-gray-500 font-regular leading-10 pb-4 flex items-center">
             <span className="relative flex h-4 w-4 mr-2">
@@ -67,7 +67,7 @@ function App() {
             Available for Projects
           </p>
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-4xl text-black font-bold leading-10">
+          <h1 className="text-4xl md:text-4xl  text-black font-semibold leading-10">
             Landing pages, branding, product design—<br />
             We design with care and empathy,<br />
             So you can focus on building real solutions<br />
@@ -95,9 +95,9 @@ function App() {
       {/* Work Section */}
       <div
         className="fixed left-0 flex flex-col items-center w-full"
-        style={{ bottom: "720px" }}
+        style={{ bottom: "720px", marginLeft: "-57px" }}
       >
-        <div className="flex flex-col items-center w-full">
+        <div className="flex flex-col items-center w-full max-w-3xl">
           <img src="/img/LP-Frame2.png" alt="Campaign Management" className="mx-auto rounded-xl shadow-lg w-96 -mt-12" />
           <img src="/img/LP13.png" alt="Work Card" className="absolute left-1/2 top-24 w-80 rounded-xl shadow-lg transform rotate-12" />
           <img src="/img/LP18.png" alt="Privacy Card" className="absolute right-1/2 top-24 w-80 rounded-xl shadow-lg transform -rotate-12" />
@@ -136,10 +136,10 @@ function App() {
       )}
       
       {/* Footer Section */}
-      <div className="fixed bottom-0 left-0 w-full bg-white text-center py-4 text-xl text-black font-bold shadow flex justify-center">
-        <div className="w-full max-w-2xl text-left">
+      <div className="fixed bottom-0 left-0 w-full bg-white text-center py-4 text-xl text-black font-regular shadow flex justify-center">
+        <div className="w-full max-w-3xl text-left">
           2025 © With Love by Leverage Design Works — All rights reserved<br />
-          Founded by @rajavlpt
+          Founded by @bharathiraja
         </div>
       </div>
 
