@@ -51,14 +51,14 @@ function App() {
   return (
     <div className="App">
       {/* Grid Toggle Button */}
-      <button
+      {/* <button
         className="fixed top-4 right-4 z-[100] bg-white/80 border border-gray-300 rounded px-4 py-2 shadow text-black text-sm font-medium hover:bg-white"
         style={{ backdropFilter: 'blur(4px)' }}
         onClick={() => setShowGrid((prev) => !prev)}
       >
         {showGrid ? 'Hide Grid' : 'Show Grid'}
       </button>
-      {showGrid && <GridOverlay />}
+      {showGrid && <GridOverlay />} */}
       
       
       {/* Header Section */}
