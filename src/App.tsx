@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import GridOverlay from './GridOverlay';
+import ViewWorkSection from './ViewWorkSection';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
+  const [showGrid, setShowGrid] = useState(false);
 
   // Handle modal open with history
   const openModal = () => {
@@ -47,6 +50,15 @@ function App() {
 
   return (
     <div className="App">
+      {/* Grid Toggle Button */}
+      <button
+        className="fixed top-4 right-4 z-[100] bg-white/80 border border-gray-300 rounded px-4 py-2 shadow text-black text-sm font-medium hover:bg-white"
+        style={{ backdropFilter: 'blur(4px)' }}
+        onClick={() => setShowGrid((prev) => !prev)}
+      >
+        {showGrid ? 'Hide Grid' : 'Show Grid'}
+      </button>
+      {showGrid && <GridOverlay />}
       
       
       {/* Header Section */}
@@ -56,8 +68,8 @@ function App() {
       </header>
 
       {/* Main Content Section */}
-      <div className="mt-48 flex flex-col items-center w-full ">
-        <div className="w-full max-w-3xl text-left ml-[20px]">
+      <div className="mt-12 xl:mt-48 flex flex-col items-center w-full ">
+        <div className="w-full max-w-sm lg:max-w-3xl xl:max-w-3xl text-left ml-[20px]">
           {/* Available for Projects */}
           <p className="text-xl text-gray-500 font-regular leading-10 pb-4 flex items-center">
             <span className="relative flex h-4 w-4 mr-2">
@@ -67,14 +79,14 @@ function App() {
             Available for Projects
           </p>
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-4xl  text-black font-semibold leading-10">
+          <h1 className="text-lg md:text-2xl lg:text-4xl xl:text-4xl  text-black font-semibold leading-6 xl:leading-10">
             Landing pages, branding, product design—<br />
             We design with care and empathy,<br />
             So you can focus on building real solutions<br />
             for your customers.
           </h1>
           {/* Supporting Text */}
-          <p className="text-gray-600 mt-8 text-xl">
+          <p className="text-gray-600 mt-8 text-sm md:text-lg lg:text-lg xl:text-2xl">
             We craft the pitch, shape the product, and design the first touchpoint.<br />
             With precision and empathy, You build the solution. <br />
             We make it resonate.
@@ -93,22 +105,7 @@ function App() {
       </div>
 
       {/* Work Section */}
-      <div
-        className="fixed left-0 flex flex-col items-center w-full"
-        style={{ bottom: "720px", marginLeft: "-57px" }}
-      >
-        <div className="flex flex-col items-center w-full max-w-3xl">
-          <img src="/img/LP-Frame2.png" alt="Campaign Management" className="mx-auto rounded-xl shadow-lg w-96 -mt-12" />
-          <img src="/img/LP13.png" alt="Work Card" className="absolute left-1/2 top-24 w-80 rounded-xl shadow-lg transform rotate-12" />
-          <img src="/img/LP18.png" alt="Privacy Card" className="absolute right-1/2 top-24 w-80 rounded-xl shadow-lg transform -rotate-12" />
-          <button
-            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 py-3 rounded-full bg-white/20 border border-white/40 backdrop-blur-md shadow-lg text-black font-semibold transition hover:bg-white/30"
-            onClick={openModal}
-          >
-            View Work
-          </button>
-        </div>
-      </div>
+      <ViewWorkSection onOpenModal={openModal} />
 
       {/* Modal */}
       {showModal && (
@@ -136,10 +133,10 @@ function App() {
       )}
       
       {/* Footer Section */}
-      <div className="fixed bottom-0 left-0 w-full bg-white text-center py-4 text-xl text-black font-regular shadow flex justify-center">
-        <div className="w-full max-w-3xl text-left">
-          2025 © With Love by Leverage Design Works — All rights reserved<br />
-          Founded by @bharathiraja
+      <div className="fixed bottom-0 left-0 w-full bg-white text-center py-4 text-lg xl:text-lg text-black font-regular xl:font-medium shadow flex justify-center">
+        <div className="w-full max-w-3xl text-center">
+          2025 © With Love by Leverage Design Works — <br />
+          All rights reserved Founded by @bharathiraja
         </div>
       </div>
 
