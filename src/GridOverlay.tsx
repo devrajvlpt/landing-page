@@ -1,26 +1,35 @@
 import React from 'react';
 
-const GridOverlay: React.FC = () => (
-  <div
-    className="pointer-events-none fixed inset-0 z-50 flex"
-    style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(12, 1fr)',
-      gridTemplateRows: 'repeat(5, 1fr)',
-      width: '100vw',
-      height: '100vh',
-    }}
-  >
-    {Array.from({ length: 12 * 5 }).map((_, i) => (
+const GridOverlay: React.FC = () => {
+  const gutter = '40px';
+
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 z-50"
+      style={{
+        height: '1200px',
+      }}
+    >
       <div
-        key={i}
+        className="w-full max-w-6xl mx-auto px-8 py-16 h-full"
         style={{
-          borderRight: (i % 12 !== 11) ? '1px solid rgba(255, 0, 0, 0.2)' : undefined,
-          borderBottom: (i < 12 * 4) ? '1px solid rgba(255, 0, 0, 0.28)' : undefined,
+          display: 'grid',
+          gridTemplateColumns: `repeat(9, 1fr)`,
+          gap: gutter,
         }}
-      />
-    ))}
-  </div>
-);
+      >
+        {Array.from({ length: 9 }).map((_, i) => (
+          <div
+            key={i}
+            style={{
+              borderLeft: '1px solid rgba(255, 0, 0, 0.3)',
+              borderRight: i === 8 ? '1px solid rgba(255, 0, 0, 0.3)' : 'none',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default GridOverlay; 

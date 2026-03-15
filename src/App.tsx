@@ -1,145 +1,371 @@
-import React, { useState, useEffect } from 'react';
-// import logo from './logo.svg';
-import './App.css';
-import GridOverlay from './GridOverlay';
-import ViewWorkSection from './ViewWorkSection';
+import React, { useState } from "react";
+import "./App.css";
+import GridOverlay from "./GridOverlay";
+
+interface CaseStudy {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  preText: string;
+  detailImage: string;
+}
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
+  const [showWorkGallery, setShowWorkGallery] = useState(false);
+  const [showBrandingGallery, setShowBrandingGallery] = useState(false);
+  const [currentBrandingIndex, setCurrentBrandingIndex] = useState(0);
 
-  // Handle modal open with history
-  const openModal = () => {
-    setShowModal(true);
-    window.history.pushState({ modal: true }, "Modal");
+  const handleSetupCall = () => {
+    window.open(
+      "https://cal.com/bharathi-raja-hastjw/15min?overlayCalendar=true",
+      "_blank",
+    );
   };
 
-  // Handle modal close
-  const closeModal = () => {
-    setShowModal(false);
-    // Only go back if the last state was the modal
-    if (window.history.state && window.history.state.modal) {
-      window.history.back();
+  const handleSeeWork = () => {
+    setShowWorkGallery(true);
+    setShowBrandingGallery(false);
+    setCurrentBrandingIndex(0);
+  };
+
+  const handleBackToHome = () => {
+    setShowWorkGallery(false);
+    setShowBrandingGallery(false);
+    setCurrentBrandingIndex(0);
+  };
+
+  const handleBrandingClick = () => {
+    setShowBrandingGallery(true);
+  };
+
+  const handleBackToWorkGallery = () => {
+    setShowBrandingGallery(false);
+    setCurrentBrandingIndex(0);
+  };
+
+  const handleNextBranding = () => {
+    setCurrentBrandingIndex((prev) => (prev + 1) % brandingImages.length);
+  };
+
+  const handlePrevBranding = () => {
+    setCurrentBrandingIndex((prev) => (prev - 1 + brandingImages.length) % brandingImages.length);
+  };
+
+  // Branding images for thumbnail grid and carousel (first 6 images)
+  const brandingImages = [
+    {
+      id: 'ldw',
+      image: '/LDW.svg',
+      title: 'Leverage Design Works Logo',
+      preText: 'A comprehensive branding identity for Leverage Design Works, focusing on clean, modern aesthetics that reflect the studio\'s commitment to precision and empathy in design. The logo embodies the balance between engineering depth and design intuition.'
+    },
+    {
+      id: 'leverage',
+      image: '/LEVERAGE.png',
+      title: 'Leverage Brand Identity',
+      preText: 'A bold brand identity that communicates strength and strategic thinking. This design system creates a cohesive visual language that helps businesses stand out and connect with their audience.'
+    },
+    {
+      id: 'card1',
+      image: '/Card-1.png',
+      title: 'Card Design 1',
+      preText: 'A modern card design that emphasizes clarity and user experience. This design focuses on creating an intuitive interface that guides users through their journey with precision and elegance.'
+    },
+    {
+      id: 'card2',
+      image: '/Card-2.png',
+      title: 'Card Design 2',
+      preText: 'An innovative card design solution that balances functionality with aesthetic appeal. This piece showcases our ability to create designs that are both beautiful and highly functional.'
+    },
+    {
+      id: 'first-idea',
+      image: '/First Idea.png',
+      title: 'First Idea',
+      preText: 'The initial concept that sparked a series of innovative design solutions. This early exploration demonstrates our creative process and how we transform ideas into tangible design experiences.'
+    },
+    {
+      id: 'inspiration',
+      image: '/Inspiration.png',
+      title: 'Inspiration',
+      preText: 'A visual exploration of inspiration and creative direction. This work represents our approach to finding unique solutions that resonate with audiences and drive meaningful engagement.'
+    },
+  ];
+
+  // All other work images (displayed vertically)
+  const workImages = [
+    {
+      id: 'gradientecture',
+      image: '/img/Gradient.png',
+      title: ''
+    },
+    {
+      id: 'menu',
+      image: '/img/menu.png',
+      title: ''
+    },
+    {
+      id: 'logo',
+      image: '/img/LogoWork.png',
+      title: ''
+    },
+    {
+      id: 'campaign',
+      image: '/img/campaign.png',
+      title: ''
+    },
+    {
+      id: 'cards',
+      image: '/img/cards.png',
+      title: ''
+    },
+    {
+      id: 'date',
+      image: '/img/releasedate.png',
+      title: ''
+    },
+    {
+      id: 'menuselect',
+      image: '/img/menuselect.png',
+      title: ''
     }
-  };
+  ];
 
-  // Listen for browser back/forward
-  useEffect(() => {
-    const handlePopState = () => {
-      if (showModal) {
-        setShowModal(false);
-      }
-    };
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [showModal]);
-
-  // Close modal on Escape key
-  useEffect(() => {
-    if (!showModal) return;
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setShowModal(false);
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, [showModal]);
-
-  const handleBookCall = () => {
-    window.open('https://cal.com/bharathi-raja-hastjw/15min?overlayCalendar=true', '_blank');
-  };
-
-  return (
-    <div className="App">
-      {/* Grid Toggle Button */}
-      {/* <button
-        className="fixed top-4 right-4 z-[100] bg-white/80 border border-gray-300 rounded px-4 py-2 shadow text-black text-sm font-medium hover:bg-white"
-        style={{ backdropFilter: 'blur(4px)' }}
-        onClick={() => setShowGrid((prev) => !prev)}
-      >
-        {showGrid ? 'Hide Grid' : 'Show Grid'}
-      </button>
-      {showGrid && <GridOverlay />} */}
-      
-      
-      {/* Header Section */}
-      <header className="w-full max-w-3xl text-left mx-auto mt-16 flex flex-row items-center ml-[20px]">
-        <img src="/LDW.svg" alt="Leverage Design Works Logo" className="h-10 mb-2 px-4" />
-        <span className="text-black text-xl">Leverage Design Works</span>
-      </header>
-
-      {/* Main Content Section */}
-      <div className="mt-12 xl:mt-48 flex flex-col items-center w-full ">
-        <div className="w-full max-w-sm lg:max-w-3xl xl:max-w-3xl text-left ml-[20px]">
-          {/* Available for Projects */}
-          <p className="text-xl text-gray-500 font-regular leading-10 pb-4 flex items-center">
-            <span className="relative flex h-4 w-4 mr-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
-            </span>
-            Available for Projects
-          </p>
-          {/* Main Heading */}
-          <h1 className="text-lg md:text-2xl lg:text-4xl xl:text-4xl  text-black font-semibold leading-6 xl:leading-10">
-            Landing pages, branding, product design—<br />
-            We design with care and empathy,<br />
-            So you can focus on building real solutions<br />
-            for your customers.
-          </h1>
-          {/* Supporting Text */}
-          <p className="text-gray-600 mt-8 text-sm md:text-lg lg:text-lg xl:text-2xl">
-            We craft the pitch, shape the product, and design the first touchpoint.<br />
-            With precision and empathy, You build the solution. <br />
-            We make it resonate.
-          </p>
-          {/* Book a call Button */}
-          <button
-            className="mt-8 px-6 py-3 rounded-full bg-black text-white font-medium"
-            onClick={handleBookCall}
-          >
-            <div className='flex flex-row items-center'>
-              <img src="/img/phone.png" alt="Leverage Design Works Logo" />
-              <span className="ml-2 py-1">Book a call</span>
+  // Branding Gallery View (one image at a time with navigation)
+  if (showBrandingGallery) {
+    const currentImage = brandingImages[currentBrandingIndex];
+    return (
+      <div className="App bg-white relative" style={{ minHeight: '1200px' }}>
+        {showGrid && <GridOverlay />}
+        <div className="w-full max-w-8xl mx-auto px-8 py-16">
+          <div className="grid grid-cols-9 gap-[40px] w-full">
+            {/* Back button */}
+            <div className="col-span-1">
+              <button
+                onClick={handleBackToWorkGallery}
+                className="text-black underline font-semibold hover:text-gray-600 transition-colors"
+                style={{
+                  width: '120px',
+                  height: '40px',
+                  fontSize: '12px'
+                }}
+              >
+                ← Back
+              </button>
             </div>
-          </button>
-        </div>
-      </div>
-
-      {/* Work Section */}
-      <ViewWorkSection onOpenModal={openModal} />
-
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white overflow-y-auto" style={{ maxHeight: "300vh" }}>
-          <button
-            className="absolute top-8 right-8 text-4xl font-bold text-gray-700 hover:text-black focus:outline-none"
-            onClick={closeModal}
-            aria-label="Close"
-          >
-            &times;
-          </button>
-          <div className="bg-white rounded-lg pt-96 mt-96 pb-12 px-8 max-w-5xl w-full relative flex flex-col items-center">
-            {/* Add a heading if you want */}
-            <div className="flex flex-col gap-12 items-center w-full">
-              <h2 className="text-2xl font-bold mb-8">Our Work</h2>
-              <img src="/img/LP-Frame2.png" alt="Campaign Management" className="rounded-xl" />
-              <img src="/img/Gradientecture.png" alt="Work Card" className="rounded-xl" />
-              <img src="/img/LP18.png" alt="Privacy Card" className="rounded-xl shadow-lg" />
-              <img src="/img/T1-3.png" alt="Work Card" className="rounded-xl" />
-              <img src="/img/GreenMacha.png" alt="Privacy Card" className="rounded-xl" />      
-              <img src="/img/LP-Frame2.png" alt="Campaign Management" className="rounded-xl" />        
+            {/* Empty space */}
+            <div className="col-span-2"></div>
+            {/* Branding content */}
+            <div className="col-span-6">
+              <div className="space-y-6">
+                <div>
+                  <span className="text-sm text-gray-500 uppercase tracking-wide">Branding</span>
+                  <h2 className="text-2xl font-bold text-black mt-2">{currentImage.title}</h2>
+                </div>
+                <div className="mt-4 flex justify-center items-center" style={{ minHeight: '500px', maxHeight: '600px', width: '100%' }}>
+                  <div className="flex justify-center items-center w-full h-full">
+                    <img
+                      src={currentImage.image}
+                      alt={currentImage.title}
+                      className="rounded-lg"
+                      style={{ 
+                        maxWidth: '100%', 
+                        maxHeight: '600px',
+                        width: 'auto',
+                        height: 'auto',
+                        objectFit: 'contain'
+                      }}
+                    />
+                  </div>
+                </div>
+                {/* Small text section below image */}
+                <div className="mt-4">
+                  <p className="text-gray-600 text-sm leading-relaxed text-left col-3">
+                    {currentImage.preText}
+                  </p>
+                </div>
+                {/* Navigation buttons */}
+                <div className="flex justify-between items-center mt-6">
+                  <button
+                    onClick={handlePrevBranding}
+                    className="bg-gray-300 text-black w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={brandingImages.length <= 1}
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <span className="text-gray-600 text-sm">
+                    {currentBrandingIndex + 1} / {brandingImages.length}
+                  </span>
+                  <button
+                    onClick={handleNextBranding}
+                    className="bg-gray-300 text-black w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={brandingImages.length <= 1}
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      )}
-      
-      {/* Footer Section */}
-      <div className="fixed bottom-0 left-0 w-full bg-white text-center py-4 text-lg xl:text-lg text-black font-regular xl:font-medium shadow flex justify-center">
-        <div className="w-full max-w-3xl text-center">
-          2025 © With Love by Leverage Design Works — <br />
-          All rights reserved Founded by @bharathiraja
+      </div>
+    );
+  }
+
+  // Work Gallery View
+  if (showWorkGallery) {
+    return (
+      <div className="App bg-white relative" style={{ minHeight: '1200px' }}>
+        {showGrid && <GridOverlay />}
+        <div className="w-full max-w-8xl mx-auto px-8 py-16">
+          <div className="grid grid-cols-9 gap-[40px] w-full">
+            {/* Back button */}
+            <div className="col-span-1">
+              <button
+                onClick={handleBackToHome}
+                className="text-black underline font-semibold hover:text-gray-600 transition-colors"
+                style={{
+                  width: '120px',
+                  height: '40px',
+                  fontSize: '12px'
+                }}
+              >
+                ← Back
+              </button>
+            </div>
+            {/* Empty space */}
+            <div className="col-span-2"></div>
+            {/* Content */}
+            <div className="col-span-6">
+              {/* Branding thumbnail grid section - single preview */}
+              <div className="mb-12">
+                <h2 className="text-2xl font-bold text-black mb-6">Branding</h2>
+                <div className="relative group" style={{ maxWidth: '400px' }}>
+                  {/* Single smaller preview image */}
+                  <img
+                    src={brandingImages[0].image}
+                    alt="Branding Preview"
+                    className="w-full h-auto rounded-lg object-cover"
+                  />
+                  {/* Read More overlay button */}
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 rounded-lg flex items-center justify-center">
+                    <button
+                      onClick={() => {
+                        setCurrentBrandingIndex(0);
+                        handleBrandingClick();
+                      }}
+                      className="opacity-0 group-hover:opacity-100 bg-white text-black px-6 py-3 rounded-lg font-semibold transition-opacity"
+                    >
+                      Read More
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* All other work images - displayed vertically one after another */}
+              <div>
+                <h2 className="text-2xl font-bold text-black mb-6">Case Studies</h2>
+                <div className="space-y-6">
+                  {workImages.map((item) => (
+                    <div key={item.id}>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-auto rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    );
+  }
 
+  // Main Landing Page View
+  return (
+    <div className="App bg-white relative" style={{ height: '1200px' }}>
+      {showGrid && <GridOverlay />}
+      <div className="h-full">
+        {/* 9 Column Grid */}
+        <div className="grid grid-cols-9 gap-[40px] w-full">
+          {/* Left side - Logo, Title, and Text (2 columns) */}  
+                  
+          <div className="ml-8 col-span-2 sticky top-16 self-start flex flex-col gap-5 h-fit" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Logo */}
+            <div className="flex flex-row">
+            <img
+              src="/LDW.svg"
+              alt="Logo"
+              width="64"
+              height="64"
+            />
+            {/* Title */}
+            <h1 className="px-4 mt-2 text-6xl leading-6 md:text-6xl lg:text-2xl font-bold text-gray-900 text-left" >
+              L.DW              
+            </h1>
+            </div>
+            {/* Text paragraphs */}
+            <p className="text-gray-800 text-xs leading-relaxed text-left">
+              I'm Bharathi,Freelance designer based out of chennai,India
+              Leverage Design Works is a small corner in the vast internet
+              where i design and collobrate with outside world 
+            </p>
+            <p className="text-gray-600 text-xs leading-normal text-left">
+              With a rare blend of engineering depth and design intuition, I specialise in UI/UX, 
+              website design, branding, and product design that balance beauty with real-world 
+              ouput.
+            </p>
+            <p className="text-gray-400 hover:text-blue-500 leading-relaxed text-left" style={{ fontSize: '10px' }}>
+              I charge 1.5K USD for website 1.2K USD branding.
+              <br></br>
+              Product design on short-long term subscription basis
+            </p>
+
+            {/* Buttons - Setup a Call and See my work */}
+            <div className="flex items-center" style={{ gap: '4px' }}>
+              <button
+                onClick={handleSetupCall}
+                className="bg-black text-white font-semibold hover:bg-gray-900 transition-colors"
+                style={{
+                  width: '120px',
+                  height: '40px',
+                  borderRadius: '60px',
+                  fontSize: '12px'
+                }}
+              >
+                Setup a Call
+              </button>             
+            </div>
+          </div>
+
+          <div className="col-span-7 max-w-full">
+              {/* <div className="text-8xl font-bold">L.DW</div> */}
+              
+              <div className="flex flex-col ml-12">
+                {workImages.map((item) => (
+                  <div key={item.id} className="w-full">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full"
+                      sizes="1100px"
+                    />
+                    <p className="mt-2 text-sm">{item.title}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+        </div>
+        
+      </div>
     </div>
   );
 }
