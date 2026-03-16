@@ -313,17 +313,21 @@ function App() {
             </h1>
             </div>
             {/* Text paragraphs */}
-            <p className="text-gray-800 text-xs leading-relaxed text-left">
+            <p className="mt-12 text-gray-800  text-xl leading-normal text-left">
               I'm Bharathi,Freelance designer based out of chennai,India
+              <br></br>
               Leverage Design Works is a small corner in the vast internet
+              <br />
               where i design and collobrate with outside world 
             </p>
-            <p className="text-gray-600 text-xs leading-normal text-left">
-              With a rare blend of engineering depth and design intuition, I specialise in UI/UX, 
-              website design, branding, and product design that balance beauty with real-world 
-              ouput.
+            <p className="text-gray-600 text-xl leading-normal text-left">
+              With a rare blend of engineering depth and design intuition. 
+              <br />
+              I specialise in UI/UX, website design, branding, and product design 
+              <br />
+              that balance beauty with real-world ouput.
             </p>
-            <p className="text-gray-400 hover:text-blue-500 leading-relaxed text-left" style={{ fontSize: '10px' }}>
+            <p className="text-gray-400 hover:text-blue-500 text-lg leading-normal text-left">
               I charge 1.5K USD for website 1.2K USD branding.
               <br></br>
               Product design on short-long term subscription basis
@@ -333,7 +337,7 @@ function App() {
             <div className="flex items-center" style={{ gap: '4px' }}>
               <button
                 onClick={handleSetupCall}
-                className="bg-black text-white font-semibold hover:bg-gray-900 transition-colors"
+                className="bg-black text-white font-semibold text-lg hover:bg-gray-900 transition-colors"
                 style={{
                   width: '120px',
                   height: '40px',
