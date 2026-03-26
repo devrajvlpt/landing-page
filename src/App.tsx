@@ -313,36 +313,38 @@ function App() {
             </h1>
             </div>
             {/* Text paragraphs */}
-            <p className="mt-12 text-gray-800  text-xl leading-normal text-left">
-              I'm Bharathi,Freelance designer based out of chennai,India
+            <p className="mt-4 text-gray-800 text-2xl leading-normal text-left">
+              With a rare blend of design intuition and engineering depth.
+              <br />
+              We design website, branding, and product
+              <br />
+              that balance beauty with real-world outcomes.
+            </p>
+
+            <p className="mt-4 text-gray-800  text-xl leading-normal text-left">
+              We're team of two designers based out of Chennai India.
               <br></br>
               Leverage Design Works is a small corner in the vast internet
               <br />
-              where i design and collobrate with outside world 
+              where I design and collobrate with startups, AI-Native Company, Web3 
             </p>
-            <p className="text-gray-600 text-xl leading-normal text-left">
-              With a rare blend of engineering depth and design intuition. 
-              <br />
-              I specialise in UI/UX, website design, branding, and product design 
-              <br />
-              that balance beauty with real-world ouput.
-            </p>
-            <p className="text-gray-400 hover:text-blue-500 text-lg leading-normal text-left">
-              I charge 1.5K USD for website 1.2K USD branding.
+            
+            <p className="mt-2 text-gray-400 hover:text-blue-500 text-lg leading-normal text-left">
+              We charge <span className="font-bold text-black">1.5K USD</span> for <span className="font-bold text-black">website</span>, <span className="font-bold text-black">1.2K USD</span> for <span className="font-bold text-black">branding</span>.
               <br></br>
               Product design on short-long term subscription basis
             </p>
 
             {/* Buttons - Setup a Call and See my work */}
-            <div className="flex items-center" style={{ gap: '4px' }}>
+            <div className="mt-4 flex items-center" style={{ gap: '4px' }}>
               <button
                 onClick={handleSetupCall}
                 className="bg-black text-white font-semibold text-lg hover:bg-gray-900 transition-colors"
                 style={{
-                  width: '120px',
-                  height: '40px',
+                  width: '140px',
+                  height: '60px',
                   borderRadius: '60px',
-                  fontSize: '12px'
+                  fontSize: '16px'
                 }}
               >
                 Setup a Call
