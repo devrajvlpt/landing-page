@@ -313,23 +313,26 @@ function App() {
             </h1>
             </div>
             {/* Text paragraphs */}
-            <p className="mt-4 text-gray-800 text-2xl leading-normal text-left">
-              With a rare blend of design intuition and engineering depth.
+            <p className="mt-4 text-black font-semibold text-3xl leading-10 text-left">
+              With a rare blend of design intuition and engineering depth. We design website, 
               <br />
-              We design website, branding, and product
+              branding, and product that balance beauty
               <br />
-              that balance beauty with real-world outcomes.
+              with real-world outcomes.
             </p>
 
-            <p className="mt-4 text-gray-800  text-xl leading-normal text-left">
+            <p className="mt-4 text-gray-700  text-2xl leading-9 text-left">
               We're team of two designers based out of Chennai India.
               <br></br>
-              Leverage Design Works is a small corner in the vast internet
+              Leverage design works is a small corner in the vast internet
               <br />
-              where I design and collobrate with startups, AI-Native Company, Web3 
+              Where we design and collobrate with 
+              <br />
+              <p className="text-2xl leading-10 font-semibold text-black py-2">Startups, AI-Native Company, Web3 </p>
             </p>
+
             
-            <p className="mt-2 text-gray-400 hover:text-blue-500 text-lg leading-normal text-left">
+            <p className="mt-2 text-gray-400 text-lg leading-normal text-left">
               We charge <span className="font-bold text-black">1.5K USD</span> for <span className="font-bold text-black">website</span>, <span className="font-bold text-black">1.2K USD</span> for <span className="font-bold text-black">branding</span>.
               <br></br>
               Product design on short-long term subscription basis
