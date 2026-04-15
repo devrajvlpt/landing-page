@@ -313,29 +313,29 @@ function App() {
             </h1>
             </div>
             {/* Text paragraphs */}
-            <p className="mt-4 text-black font-semibold text-3xl leading-10 text-left">
-              With a rare blend of design intuition and engineering depth. We design website, 
+            <p className="mt-4 text-gray-700 text-2xl leading-8 text-left">
+              With a rare blend of design intuition and engineering depth.
               <br />
-              branding, and product that balance beauty
+              We design website, branding, and product that balance beauty
               <br />
               with real-world outcomes.
             </p>
 
-            <p className="mt-4 text-gray-700  text-2xl leading-9 text-left">
+            <p className="mt-4 text-gray-700  text-2xl leading-8 text-left">
               We're team of two designers based out of Chennai India.
               <br></br>
               Leverage design works is a small corner in the vast internet
               <br />
               Where we design and collobrate with 
               <br />
-              <p className="text-2xl leading-10 font-semibold text-black py-2">Startups, AI-Native Company, Web3 </p>
+              <p className="text-2xl leading-10 font-semibold text-black py-2">Startups, AI-Native Company, Web3 Platforms</p>
             </p>
 
             
-            <p className="mt-2 text-gray-400 text-lg leading-normal text-left">
+            <p className="mt-2 text-gray-700 text-lg leading-normal text-left">
               We charge <span className="font-bold text-black">1.5K USD</span> for <span className="font-bold text-black">website</span>, <span className="font-bold text-black">1.2K USD</span> for <span className="font-bold text-black">branding</span>.
               <br></br>
-              Product design on short-long term subscription basis
+              Product design on short/long term subscription basis
             </p>
 
             {/* Buttons - Setup a Call and See my work */}
